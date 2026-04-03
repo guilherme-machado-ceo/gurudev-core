@@ -12,8 +12,12 @@ Baseado em: GRAMMAR_V1_0_0_ALPHA.md
 """
 
 import ply.yacc as yacc
-from .lexer import tokens, build_lexer
-from .ast_nodes import *
+try:
+    from .lexer import tokens, build_lexer
+    from .ast_nodes import *
+except ImportError:
+    from lexer.gurudev_lexer import tokens, build_lexer
+    from ast_nodes import *
 
 # ============================================================
 # 1. PRECEDÊNCIA DE OPERADORES
